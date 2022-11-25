@@ -21,7 +21,9 @@ export async function getStaticProps() {
           author {
             id
             name
-            avatar
+            avatar {
+              url
+            }
           }
         }
       }
