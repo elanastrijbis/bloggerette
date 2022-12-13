@@ -47,18 +47,16 @@ export default function Home({ posts }) {
       </Head>
 
       <main className={styles.main}>
-        <div className={styles.grid}>
-          {posts.map((post) => (
-            <BlogCard
-              key={post.id}
-              title={post.title}
-              author={post.author}
-              coverPhoto={post.coverPhoto}
-              datePublished={post.datePublished}
-              slug={post.slug}
-            />
-          ))}
-        </div>
+        {posts.map((post) => (
+          <BlogCard
+            key={post.id}
+            title={post.title}
+            author={post.author}
+            coverPhoto={post.coverPhoto}
+            datePublished={post.datePublished}
+            slug={post.slug}
+          />
+        ))}
       </main>
     </div>
   );

@@ -1,28 +1,30 @@
-import React from 'react';
 import styles from '../styles/BlogCard.module.css';
+import moment from 'moment';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function BlogCard({ title, coverPhoto, slug, author, datePublished }) {
+function BlogPost({ title, author, coverPhoto, datePublished, slug }) {
   return (
     <div className={styles.card}>
-      <Link href={'/posts/' + slug}>
+      <Link href={`/posts/${slug}`}>
         <div className={styles.imgContainer}>
-          <Image src={coverPhoto.url} alt="coverphoto" width={600} height={200} unoptimized />
+          <Image layout="fill" src={coverPhoto.url} alt="" />
         </div>
       </Link>
       <div className={styles.text}>
         <h2>{title}</h2>
         <div className={styles.details}>
           <div className={styles.author}>
-            <Image src={author.avatar.url} alt="Avatar author" width={250} height={250} unoptimized />
+            <Image src={author.avatar.url} alt={author.name} width={32} height={32} />
             <h3>{author.name}</h3>
           </div>
           <div className={styles.date}>
-            <h3>{datePublished}</h3>
+            <h3>{moment(datePublished).format('MMMM d, YYYY')}</h3>
           </div>
         </div>
       </div>
     </div>
   );
 }
+
+export default BlogPost;
